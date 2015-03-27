@@ -797,9 +797,7 @@ the specific language governing permissions and limitations under the Apache Lic
             }
 
             installKeyUpChangeEvent(search);
-            search.on("keyup-change input paste", this.bind(function () {
-                this.updateResults(true)
-            }));
+            search.on("keyup-change input paste", this.bind(this.updateResults));
             search.on("focus", function () { search.addClass("select2-focused"); });
             search.on("blur", function () { search.removeClass("select2-focused");});
 
@@ -1493,7 +1491,7 @@ the specific language governing permissions and limitations under the Apache Lic
         externalSearch: function (term) {
             this.open();
             this.search.val(term);
-            this.updateResults(true);
+            this.updateResults(false);
         },
 
         // abstract
@@ -2407,7 +2405,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             // and highlight it
             if (noHighlightUpdate !== false) {
-                if (initial === true && selected >= 0) {
+                if (selected >= 0) {
                     this.highlight(selected);
                 } else {
                     this.highlight(0);

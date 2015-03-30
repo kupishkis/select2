@@ -2412,7 +2412,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             // and highlight it
             if (noHighlightUpdate !== false) {
-                if (selected >= 0) {
+                if (initial === true && selected >= 0) {
                     this.highlight(selected);
                 } else {
                     this.highlight(0);
